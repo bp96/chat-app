@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import '../style.scss'
 
 const Register = () => {
 
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Lama Chat</span>
+        <span className="logo">ChatNow</span>
         <span className="title">Register</span>
         <form>
           <input required type="text" placeholder="display name" />
