@@ -1,8 +1,9 @@
-# React + Vite
+# Chat App
+A chat application (similar to something like Teams) built using React, Tailwind CSS and Firebase.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Improvements to make:
+- make search case insensitive (extra lowercase field required in firebase)
+- improve search so it's searching whilst typing and not just after Enter
+- improve GUI so there's no horizontal scrollbar
+- make profile picture optional, and upload with default if not selected
+- migrate framework from CRA to Vite
