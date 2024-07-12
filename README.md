@@ -1,9 +1,5 @@
-# Chat App
-A chat application (similar to something like Teams) built using React, Tailwind CSS and Firebase.
+# Update
 
-Improvements to make:
-- make search case insensitive (extra lowercase field required in firebase)
-- improve search so it's searching whilst typing and not just after Enter
-- improve GUI so there's no horizontal scrollbar
-- make profile picture optional, and upload with default if not selected
-- migrate framework from CRA to Vite
+After the new update of React, you won't be able to use CRA. But you can easily create your applications with Vite before following the video tutorial.
+
+[Create a React App with Vite](https://github.com/safak/youtube23/tree/react-mini)

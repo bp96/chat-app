@@ -22,7 +22,7 @@ const Search = () => {
   const handleSearch = async () => {
     const q = query(
       collection(db, "users"),
-      where("displayName", "==", username)
+      where("displayNameLowerCase", "==", username.toLowerCase()) // search using the lower case display name field so query is case insensitive
     );
 
     try {
@@ -40,7 +40,7 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
-    //check whether the group(chats in firestore) exists, if not create
+    //check whether the group (chats collection in firestore) exists, if not create it. The IDs of both people will be joined to create a unique chat.
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
@@ -81,7 +81,7 @@ const Search = () => {
       <div className="searchForm">
         <input
           type="text"
-          placeholder="Find a user"
+          placeholder="Find a user. Press Enter to search."
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
           value={username}

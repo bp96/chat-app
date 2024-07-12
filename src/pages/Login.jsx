@@ -14,11 +14,10 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("testing login page", auth, email, password)
       navigate("/")
     } catch (err) {
-      console.log("error occurred", err)
       setErr(true);
+      console.log(err)
     }
   };
   return (
@@ -32,7 +31,7 @@ const Login = () => {
           <button>Sign in</button>
           {err && <span>Something went wrong</span>}
         </form>
-        <p>No account? <Link to="/register">Register</Link></p>
+        <p>You don't have an account? <Link to="/register">Register</Link></p>
       </div>
     </div>
   );

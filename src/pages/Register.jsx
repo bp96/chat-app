@@ -15,8 +15,10 @@ const Register = () => {
     setLoading(true);
     e.preventDefault();
     const displayName = e.target[0].value;
+    const displayNameLowerCase = e.target[0].value.toLowerCase(); // needed for creating case-insensitive search queries later
     const email = e.target[1].value;
     const password = e.target[2].value;
+
     const file = e.target[3].files[0];
 
     try {
@@ -35,10 +37,12 @@ const Register = () => {
               displayName,
               photoURL: downloadURL,
             });
+            console.log(downloadURL)
             //create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
+              displayNameLowerCase,
               email,
               photoURL: downloadURL,
             });
@@ -69,17 +73,17 @@ const Register = () => {
           <input required type="text" placeholder="display name" />
           <input required type="email" placeholder="email" />
           <input required type="password" placeholder="password" />
-          <input required style={{ display: "none" }} type="file" id="file" />
+          <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
             <span>Add an avatar</span>
           </label>
           <button disabled={loading}>Sign up</button>
-          {loading && "Uploading and compressing the image please wait..."}
-          {err && <span>Something went wrong</span>}
+          {loading && "Creating account, please wait..."}
+          {err && <span>Something went wrong.</span>}
         </form>
         <p>
-          Do you have an account? <Link to="/login">Login</Link>
+          Do you have an account? <Link to="/Login">Login</Link>
         </p>
       </div>
     </div>
