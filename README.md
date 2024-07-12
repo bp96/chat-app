@@ -1,4 +1,6 @@
 # Chat App
+https://main--chat-app-bp96.netlify.app/
+
 A chat application (similar to something like Teams) built using React, Tailwind CSS and Firebase.
 
 Improvements to make:
