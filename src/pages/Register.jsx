@@ -37,7 +37,8 @@ const Register = () => {
               displayName,
               photoURL: downloadURL,
             });
-            console.log(downloadURL)
+            console.log(downloadURL);
+
             //create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
@@ -47,7 +48,7 @@ const Register = () => {
               photoURL: downloadURL,
             });
 
-            //create empty user chats on firestore
+            //create empty corresponding user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
             navigate("/");
           } catch (err) {
@@ -60,7 +61,7 @@ const Register = () => {
     } catch (err) {
       setErr(true);
       setLoading(false);
-      console.log(err)
+      console.log(err);
     }
   };
 

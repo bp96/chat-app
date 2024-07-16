@@ -21,20 +21,24 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+  // send data when pressing Enter
   const handleKey = (e) => {
     e.code === "Enter" && handleSend();
   };
 
+  // send data to firebase db
   const handleSend = async () => {
+    // if it's a file/img, do this
     if (img) {
       const storageRef = ref(storage, uuid());
 
-      const uploadTask = uploadBytesResumable(storageRef, img);
+      const uploadTask = uploadBytesResumable(storageRef, img); // for uploading image to the db
 
       uploadTask.on(
         (error) => {
-          console.log(error)
-          //TODO:Handle Error
+          console.log(error);
+          alert(error);
+          //TODO: Handle Error - currently console logs it and creates alert, but need this to appear as a message on screen
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -50,31 +54,35 @@ const Input = () => {
           });
         }
       );
+    // otherwise, just send the text being entered
     } else {
       await updateDoc(doc(db, "chats", data.chatId), {
-        messages: arrayUnion({
+        messages: arrayUnion({ // arrayUnion is a firebase function - combined the next text entered to the exisiting array of texts in db
           id: uuid(),
-          text,
+          text, // obtained from input field when user enters text
           senderId: currentUser.uid,
           date: Timestamp.now(),
         }),
       });
     }
 
+   // update the lastMessage field with the text you just sent, as well as the date for the chat stored userChats for both people
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
-
+    
+    
     await updateDoc(doc(db, "userChats", data.user.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
-
+    
+    // once text/file is sent, empty these fields
     setText("");
     setImg(null);
   };

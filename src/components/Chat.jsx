@@ -1,3 +1,5 @@
+// component that defines a single chat element
+
 import React, { useContext } from "react";
 import Cam from "../img/cam.png";
 import Add from "../img/add.png";
@@ -20,7 +22,7 @@ const Chat = () => {
         </div>
       </div>
       <Messages />
-      <Input/>
+      <Input />
     </div>
   );
 };

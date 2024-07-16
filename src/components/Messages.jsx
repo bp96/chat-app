@@ -8,6 +8,7 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
 
+  // grab the array containing all the messages 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
       doc.exists() && setMessages(doc.data().messages);
@@ -20,6 +21,7 @@ const Messages = () => {
 
   console.log(messages)
 
+  // grab each message and display on the page
   return (
     <div className="messages">
       {messages.map((m) => (

@@ -1,3 +1,4 @@
+// component for the left panel on the page when logged in
 import React from "react";
 import Navbar from "./Navbar"
 import Search from "./Search"
