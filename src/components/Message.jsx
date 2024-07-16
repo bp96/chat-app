@@ -11,8 +11,8 @@ const Message = ({ message }) => {
   
   // scrolls down to the most recent message when you sent a new message
   useEffect(() => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  }, [message]);
+    window.innerWidth>768 && ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]); // only perform smooth scroll on screen widths larger than 768px (tablet size et in style.scss)
 
   return (
     <div

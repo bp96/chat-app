@@ -34,7 +34,6 @@
       color: #5d5b8d;
       font-weight: bold;
       font-size: 24px;
-
     }
 
     .title {
@@ -102,22 +101,47 @@
     display: flex;
     overflow: hidden;
     @include tablet {
-     width: 90%;
+      width: 90%;
     }
-
+    .burger-icon {
+      display: none;
+      @include tablet {
+        display: flex;
+        padding: 10px;
+        color: white;
+        background-color: transparent;
+        position: absolute;
+        height: 50px;
+        left: 20px;
+        z-index: 100;
+        align-items: center;
+      }
+    }
     .sidebar {
       flex: 1;
       background-color: #3e3c61;
       position: relative;
 
+      .menu-items {
+        display: flex;
+        background-color: #2f2d52;
+        align-items: center;
+      }
+
       .navbar {
         display: flex;
         align-items: center;
-        background-color: #2f2d52;
+
         height: 50px;
         padding: 10px;
         justify-content: space-between;
+        text-align: right;
         color: #ddddf7;
+        width: 100%;
+
+        @include tablet {
+          justify-content: right;
+        }
 
         .logo {
           font-weight: bold;
@@ -213,6 +237,9 @@
         justify-content: space-between;
         padding: 10px;
         color: lightgray;
+      }
+      span {
+        padding-left: 30px;
       }
 
       .chatIcons {
